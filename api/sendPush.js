@@ -1,10 +1,10 @@
+import getRawBody from "raw-body";
+
 export const config = {
   api: {
     bodyParser: false,
   },
 };
-
-import getRawBody from "raw-body";
 
 export default async function handler(req, res) {
   try {
@@ -12,9 +12,8 @@ export default async function handler(req, res) {
       return res.status(405).json({ error: "Only POST allowed" });
     }
 
-    // Shopify sends RAW JSON
-    const raw = await getRawBody(req);
-    const order = JSON.parse(raw.toString());
+    const rawBody = await getRawBody(req);
+    const order = JSON.parse(rawBody.toString());
 
     console.log("ORDER RECEIVED:", order);
 
@@ -30,7 +29,7 @@ export default async function handler(req, res) {
     const response = await fetch("https://onesignal.com/api/v1/notifications", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": "application/json",
         Authorization: "Basic ofyb7firtubtnb5jiu2aosyez",
       },
       body: JSON.stringify(message),
@@ -38,6 +37,7 @@ export default async function handler(req, res) {
 
     const result = await response.json();
     return res.status(200).json(result);
+
   } catch (err) {
     console.error("ERROR:", err);
     return res.status(500).json({ error: err.message });

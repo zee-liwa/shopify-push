@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     console.log("ORDER RECEIVED:", order);
 
     const message = {
-      app_id: "71226e07-3e72-4611-a750-9183d5600c8c",
+      app_id: "3854b8dd-3b56-434a-9e65-0a67564cf920",
       include_player_ids: ["95365288-8e21-4261-997e-0a13d87e1c89"],
       headings: { en: "New Order Received!" },
       contents: { en: `Order #${order.id} from ${order.email}` },
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",
-          Authorization: "Basic os_v2_app_oerg4bz6ojdbdj2qsgb5kyamrtyhfsiq33xeatupjsiknamplilejsrgs3svempt5salkygfebf5wfd3urf2meukks7bbxw4vftuwwi",
+          Authorization: "Basic os_v2_app_hbklrxj3kzbuvhtfbjtvmthzed6cps4pqkwuujngk2elwkhbjgs7hjcu3z6kpyxyhybgavcjorfgab6by6nepznrtytutus4fdluehi",
         },
         body: JSON.stringify(message),
       }

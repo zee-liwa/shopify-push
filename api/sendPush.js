@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
     const message = {
       app_id: "3854b8dd-3b56-434a-9e65-0a67564cf920",
-      include_player_ids: ["95365288-8e21-4261-997e-0a13d87e1c89"],
+      include_player_ids: ["0e0f7ffc-0a9b-4a53-9208-fd6761b4e688"],
       headings: { en: "New Order Received!" },
       contents: { en: `Order #${order.id} from ${order.email}` },
     };

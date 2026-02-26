@@ -29,7 +29,7 @@ export default async function handler(req, res) {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",
-          Authorization: "Basic os_v2_app_hbklrxj3kzbuvhtfbjtvmthzed6cps4pqkwuujngk2elwkhbjgs7hjcu3z6kpyxyhybgavcjorfgab6by6nepznrtytutus4fdluehi",
+          Authorization: "Basic os_v2_app_hbklrxj3kzbuvhtfbjtvmthzebofyb7firtubtnb5jiu2aosyezeweopreqi5nx5wrdixweppbh7lnnmtfrraqnvoggwhpo6kxzhzfy",
         },
         body: JSON.stringify(message),
       }

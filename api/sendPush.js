@@ -23,17 +23,14 @@ export default async function handler(req, res) {
       contents: { en: `Order #${order.id} from ${order.email}` },
     };
 
-    const response = await fetch(
-      "https://onesignal.com/api/v1/notifications",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Authorization: "Basic os_v2_app_hbklrxj3kzbuvhtfbjtvmthzebofyb7firtubtnb5jiu2aosyezeweopreqi5nx5wrdixweppbh7lnnmtfrraqnvoggwhpo6kxzhzfy",
-        },
-        body: JSON.stringify(message),
-      }
-    );
+    const response = await fetch("https://onesignal.com/api/v1/notifications", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Basic os_v2_app_hbklrxj3kzbuvhtfbjtvmthzebofyb7firtubtnb5jiu2aosyezeweopreqi5nx5wrdixweppbh7lnnmtfrraqnvoggwhpo6kxzhzfy"
+      },
+      body: JSON.stringify(message),
+    });
 
     const result = await response.json();
     return res.status(200).json(result);

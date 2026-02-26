@@ -1,20 +1,20 @@
 export const config = {
   api: {
-    bodyParser: false, // Shopify raw body ko handle karega
+    bodyParser: false,
   },
 };
 
 import getRawBody from "raw-body";
 
 export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Only POST allowed" });
-  }
-
   try {
-    // Shopify raw body ko parse karein
-    const rawBody = await getRawBody(req);
-    const order = JSON.parse(rawBody.toString());
+    if (req.method !== "POST") {
+      return res.status(405).json({ error: "Only POST allowed" });
+    }
+
+    // Shopify sends RAW JSON
+    const raw = await getRawBody(req);
+    const order = JSON.parse(raw.toString());
 
     console.log("ORDER RECEIVED:", order);
 
@@ -37,9 +37,9 @@ export default async function handler(req, res) {
     });
 
     const result = await response.json();
-    res.status(200).json(result);
+    return res.status(200).json(result);
   } catch (err) {
-    console.error("ERROR:", err.message);
-    res.status(500).json({ error: err.message });
+    console.error("ERROR:", err);
+    return res.status(500).json({ error: err.message });
   }
 }

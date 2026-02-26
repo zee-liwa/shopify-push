@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=utf-8",
-          Authorization: "Basic 6cps4pqkwuujngk2elwkhbjgs"
+          Authorization: "Basic ofyb7firtubtnb5jiu2aosyez"
         },
         body: JSON.stringify(message)
       }
